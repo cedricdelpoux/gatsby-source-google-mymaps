@@ -20,6 +20,9 @@
     "maps"
   ],
   "main": "index.js",
+  "files": [
+    "gatsby-node.js"
+  ],
   "dependencies": {
     "fast-xml-parser": "^3.17.4",
     "request": "^2.88.2"
