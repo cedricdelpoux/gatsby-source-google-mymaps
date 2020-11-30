@@ -83,25 +83,51 @@ exports.sourceNodes = async (
     return
   }
 
-  try {
-    pluginOptions.ids.forEach(async (myMapsId) => {
-      const myMaps = await getMyMaps(myMapsId)
+  const timer = reporter.activityTimer(
+    `source-google-mymaps: Creating GoogleMyMaps nodes`
+  )
 
-      actions.createNode({
-        id: createNodeId(`GoogleMyMaps-${myMaps.name}`),
-        internal: {
-          type: "GoogleMyMaps",
-          content: JSON.stringify(myMaps),
-          contentDigest: createContentDigest(myMaps),
-        },
-        sourceName: pluginOptions.name || undefined,
-        ...myMaps,
-      })
-    })
-  } catch (e) {
-    reporter.error(`\`gatsby-source-google-mymaps\` encountered an error`, e)
-    return
+  if (pluginOptions.debug) {
+    timer.start()
   }
+
+  try {
+    await Promise.all(
+      pluginOptions.ids.map(async (myMapsId) => {
+        const myMaps = await getMyMaps(myMapsId)
+
+        if (
+          pluginOptions.transform &&
+          typeof pluginOptions.transform === "function"
+        ) {
+          pluginOptions.transform(myMaps)
+        }
+
+        await actions.createNode({
+          id: createNodeId(`GoogleMyMaps-${myMaps.name}`),
+          internal: {
+            type: "GoogleMyMaps",
+            content: JSON.stringify(myMaps),
+            contentDigest: createContentDigest(myMaps),
+          },
+          sourceName: pluginOptions.name || undefined,
+          ...myMaps,
+        })
+
+        if (pluginOptions.debug) {
+          timer.setStatus(myMaps.name)
+        }
+      })
+    )
+  } catch (e) {
+    reporter.panic(`source-google-mymaps: ${e.message}`)
+  }
+
+  if (pluginOptions.debug) {
+    timer.end()
+  }
+
+  return
 }
 
 exports.createSchemaCustomization = ({actions}) => {
