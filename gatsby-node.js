@@ -133,7 +133,7 @@ exports.sourceNodes = async (
 exports.createSchemaCustomization = ({actions}) => {
   const {createTypes} = actions
   const typeDefs = `
-    type GoogleMyMaps implements Node @dontInfer {
+    type GoogleMyMaps implements Node {
       name: String!
       description: String
       layers: [Layer!]!
