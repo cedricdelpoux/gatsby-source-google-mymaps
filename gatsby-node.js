@@ -31,10 +31,13 @@ const getMyMaps = async (id) => {
             const {
               kml: {Document},
             } = fastXmlParser.parse(body)
+            const folders = Array.isArray(Document.Folder)
+              ? Document.Folder
+              : [Document.Folder]
             const myMaps = {
               name: Document.name,
               description: Document.description,
-              layers: Document.Folder.map((folder) => {
+              layers: folders.map((folder) => {
                 const placemarks = Array.isArray(folder.Placemark)
                   ? folder.Placemark
                   : [folder.Placemark]
