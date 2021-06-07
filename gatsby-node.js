@@ -27,6 +27,14 @@ const getMyMaps = async (id) => {
             reject(err)
           }
 
+          if (res.statusCode === 404) {
+            reject(new Error("Unknown Google MyMaps " + id))
+          }
+
+          if (res.statusCode === 403) {
+            reject(new Error("Forbidden Google MyMaps " + id))
+          }
+
           if (body && fastXmlParser.validate(body) === true) {
             const {
               kml: {Document},
@@ -68,7 +76,7 @@ const getMyMaps = async (id) => {
             }
             resolve(myMaps)
           } else {
-            reject("Error while fetching Google MyMaps " + id)
+            reject(new Error("Invalid Google MyMaps " + id))
           }
         }
       )
