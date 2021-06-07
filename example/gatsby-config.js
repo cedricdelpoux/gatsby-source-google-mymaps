@@ -12,8 +12,7 @@ module.exports = {
       resolve: require.resolve(`..`),
       options: {
         ids: [
-          // "1mQBBrUWGSjjvetsWwZvozaiMlOBChuW2", // Iceland
-          "1i8pn_gB-I45YCwHc9bLD2UADUEn6zdvT",
+          "1mQBBrUWGSjjvetsWwZvozaiMlOBChuW2", // Iceland
         ],
         name: "travel",
         debug: true,
