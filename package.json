@@ -24,16 +24,16 @@
     "gatsby-node.js"
   ],
   "dependencies": {
-    "fast-xml-parser": "^3.19.0",
+    "fast-xml-parser": "^3.21.1",
     "request": "^2.88.2"
   },
   "devDependencies": {
-    "eslint": "^7.28.0",
+    "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^4.3.0",
-    "jest": "^27.0.4",
-    "lint-staged": "^10.5.2",
-    "prettier": "2.3.1",
+    "jest": "^27.3.1",
+    "lint-staged": "^11.2.6",
+    "prettier": "2.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
