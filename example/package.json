@@ -9,18 +9,12 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "gatsby": "^2.24.66",
-    "gatsby-image": "^2.4.20",
-    "gatsby-plugin-sharp": "^2.6.37",
-    "gatsby-remark-images": "^3.3.31",
-    "gatsby-source-filesystem": "^2.3.31",
-    "gatsby-transformer-remark": "^2.8.36",
-    "gatsby-transformer-sharp": "^2.5.16",
+    "gatsby": "^4.1.3",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom"
   },
   "devDependencies": {
     "@mapbox/polyline": "^1.1.1",
-    "@turf/turf": "^5.1.6"
+    "@turf/turf": "^6.5.0"
   }
 }
