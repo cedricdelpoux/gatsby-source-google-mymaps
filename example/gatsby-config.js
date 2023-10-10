@@ -8,7 +8,7 @@ module.exports = {
       // resolve: "gatsby-source-google-mymaps",
       resolve: require.resolve(`..`),
       options: {
-        ids: ["1ulgu9lNgtBR0XeNVETN-dIfR2tRAis8q"],
+        ids: [process.env.GOOGLE_MYMAPS_ID],
         name: "travel",
         debug: true,
         transform: transformMymaps,
